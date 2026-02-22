@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- http://localhost:8081  -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<title>Othello Game</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	
+	<div class="title">
+	<p>Othello Game</p>
+	</div>
+	
+	
+	<br><br>
+	<div class="container">
+	<h2 th:text="'現在の手番: ' + ${turn}"></h2>
+	
+	
+	<table border="1">
+    <tr th:each="row, rowStat : ${board.grid}">
+        	<td th:each="cell, colStat : ${row}">
+            	<form th:action="@{/place}" method="post">
+                	<input type="hidden" name="row"
+                       th:value="${rowStat.index}" />
+                	<input type="hidden" name="col"
+                       th:value="${colStat.index}" />
+                
+                	<button type="submit"
+        				style="width:60px;height:60px;
+               				   background-color:green;
+               				   border:none;">
+
+    				<div th:if="${cell.name() == 'BLACK'}"
+         			 style="width:40px;height:40px;
+                            background:black;
+                            border-radius:50%;
+                            margin:auto;"></div>
+
+    				<div th:if="${cell.name() == 'WHITE'}"
+                     style="width:40px;height:40px;
+                            background:white;
+                            border-radius:50%;
+                            margin:auto;
+                            border:1px solid black;"></div>
+					</button>
+             	</form>
+         	</td>
+     	</tr>
+		</table>
+	
+	
+	<div>
+    	Black: <span th:text="${blackCount}"></span>
+    	White: <span th:text="${whiteCount}"></span>
+	</div>
+	
+		<div th:if="${gameOver}">
+    		<h2>Game Over</h2>
+
+   	 	<div th:if="${winner != null}">
+        	Winner: <span th:text="${winner}"></span>
+    	</div>
+
+    	<div th:if="${winner == null}">
+        	Draw
+    	</div>
+	</div>
+	<div th:if="${pass}">
+    	Pass!
+	</div>
+</div>
+	
+	
+	
+</body>
+</html>

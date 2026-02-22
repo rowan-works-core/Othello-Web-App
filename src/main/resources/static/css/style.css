@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;   /* 横中央 */
+    align-items: center;       /* 縦中央 */
+    background-color: #ffffff;
+    font-family: sans-serif;
+}
+
+
+.title {
+	position: absolute; /*ページの左上固定*/
+	top: 0px;	/*上余白*/
+	left: 20px;	/*左余白*/
+	font-family: 'Arial Black', sans-serif;
+	font-size: 50px;
+	margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.board {
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+.cell-button {
+    width: min(8vw, 60px);
+    height: min(8vw, 60px);
+    background-color: green;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.black-stone {
+    width: 70%;
+    height: 70%;
+    background: black;
+    border-radius: 50%;
+}
+
+.white-stone {
+    width: 70%;
+    height: 70%;
+    background: white;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.score {
+    margin-top: 15px;
+    font-size: 18px;
+}
