@@ -58,3 +58,14 @@ body {
     margin-top: 15px;
     font-size: 18px;
 }
+
+@media (max-width: 768px) {
+
+  .board {
+    width: 95vw;
+    height: 95vw;
+    max-width: none;
+    max-height: none;
+  }
+
+}
