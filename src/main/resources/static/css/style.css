@@ -1,37 +1,43 @@
 @charset "UTF-8";
 
+/* 修正①：縦中央固定をやめる */
 body {
     margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;   /* 横中央 */
-    align-items: center;       /* 縦中央 */
     background-color: #ffffff;
     font-family: sans-serif;
 }
 
-
-.title {
-	position: absolute; /*ページの左上固定*/
-	top: 0px;	/*上余白*/
-	left: 20px;	/*左余白*/
-	font-family: 'Arial Black', sans-serif;
-	font-size: 50px;
-	margin: 0;
+/* 修正②：全体を縦並び中央配置 */
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
 }
 
-.container {
+/* 修正③：absoluteを削除 */
+.title {
+    font-family: 'Arial Black', sans-serif;
+    font-size: clamp(28px, 6vw, 50px); /* レスポンシブ対応 */
+    margin: 0;
     text-align: center;
 }
 
-.board {
-    border-collapse: collapse;
-    margin: 20px auto;
+.turn {
+    font-size: clamp(16px, 4vw, 24px);
+    margin: 10px 0;
 }
 
+/* 修正④：tableを中央化 */
+.board {
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+/* 既存のレスポンシブ対応を活用 */
 .cell-button {
-    width: min(8vw, 60px);
-    height: min(8vw, 60px);
+    width: min(10vw, 60px);  /* 少し大きく */
+    height: min(10vw, 60px);
     background-color: green;
     border: none;
     display: flex;
@@ -56,16 +62,15 @@ body {
 
 .score {
     margin-top: 15px;
-    font-size: 18px;
+    font-size: clamp(14px, 3.5vw, 18px);
 }
 
+/* 修正⑤：スマホで盤面拡大 */
 @media (max-width: 768px) {
 
-  .board {
-    width: 95vw;
-    height: 95vw;
-    max-width: none;
-    max-height: none;
+  .cell-button {
+      width: 11vw;
+      height: 11vw;
   }
 
 }
